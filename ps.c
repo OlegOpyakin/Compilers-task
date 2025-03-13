@@ -236,7 +236,16 @@ void Add(struct PSF* PSF1, struct PSF* PSF2){
             if( StringsEqual( PSF1->elems_[i].variables_, PSF2->elems_[j].variables_, 
                               PSF1->elems_[i].num_of_variables, PSF2->elems_[j].num_of_variables ) )
             {
-                PSF1->elems_[i].num_mult_ += PSF2->elems_[j].num_mult_;
+                //PSF1->elems_[i].num_mult_ += PSF2->elems_[j].num_mult_;
+                if(PSF1->elems_[i].num_mult_ == -PSF2->elems_[j].num_mult_) // if we get 0 from adding
+                {
+                    PSF1->elems_[i] = PSF1->elems_[PSF1->elems_num_ - 1];
+                    PSF1->elems_num_ -= 1;
+                }
+                else
+                {
+                    PSF1->elems_[i].num_mult_ += PSF2->elems_[j].num_mult_;
+                }
                 used2[j] = true;
             }
         }
@@ -462,7 +471,7 @@ int main(void){
     }
     
     LineParse(&PSF1);
-    
+
     //printf("Enter PSF2:\n");
 
     PSF2.length_ = getline(&PSF2.buf_, &PSF2.size_, stdin);
