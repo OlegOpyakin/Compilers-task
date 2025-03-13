@@ -1,0 +1,3 @@
+*
+a*b*c - 6*d*e + f*g*h*i - 5*j*k + 2*l*m*n + o*p + q - r*s*t + 10*u*v*w - 7*x*y*z*a*b
+2*u*i*p - 9*u*y
